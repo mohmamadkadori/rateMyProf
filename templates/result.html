@@ -17,11 +17,11 @@
     <div class="container mt-5">
         <h2 class="text-light">{{ result['name'] }}</h2>
         {% if result['rating'] %}
-        <h4 class="text-light">Puan: {{ result['rating'] | round(1) }}</h4>
+        <h4 class="text-light mt-4">Puan:  {{ result['rating'] | round(1) }}⭐</h4>
         {% else %}
-        <h4 class="text-light">Henüz puan verilmemiş.</h4>
+        <h4 class="text-light mt-4">Henüz puan verilmemiş.</h4>
         {% endif %}
-        <h4 class="text-light">Yorumlar:</h4>
+        <h4 class="text-light mt-4">Yorumlar:</h4>
         {% if comments %}
             <ul class="list-group mt-3">
                 {% for comment in comments %}
@@ -29,11 +29,11 @@
                 {% endfor %}
             </ul>
         {% else %}
-            <p class="text-light">Henüz yorum yapılmamış.</p>
+            <p class="text-light mt-4">Henüz yorum yapılmamış.</p>
         {% endif %}
     </div>
     <div class="container mt-5">
-        <h4 class="text-light">Puan Ver:</h4>
+        <h4 class="text-light mt-3">Puan Ver:</h4>
         <form action="/rate" method="post">
             <input type="hidden" name="profId" value="{{ result['id'] }}">
             <div class="input-group mb-3">
