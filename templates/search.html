@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}Arama Sonuçları{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+    <div class="container mt-5">
+        <h2 class="text-light">Arama Sonuçları</h2>
+        {% if results %}
+            <ul class="list-group mt-3 mb-5">
+                {% for result in results %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="/result?id={{ result['id'] }}">{{ result['name'] }}</a>
+                        {% if result['rating'] is not none %}
+                            <span class="badge bg-primary rounded-pill">{{ result['rating'] | round(1) }}</span>
+                        {% else %}
+                            <span class="badge bg-secondary rounded-pill">Puan yok</span>
+                        {% endif %}
+
+                    </li>
+                {% endfor %}
+            </ul>
+            <br>
+            
+        {% else %}
+            <h3 class="text-light">Arama sonucu bulunamadı.</h3>
+        {% endif %}
+        <h4 class="text-light mt-5">Hoca Ekle</h4>
+        <h6 class="text-warning"> Lütfen hoca adını doğru girin.</h6>
+        <form action="/add", method="post">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="name" placeholder="Hoca Adı">
+            </div>
+            <button type="submit" class="btn btn-primary">Ekle</button>
+        </form>
+    </div>
+{% endblock %}

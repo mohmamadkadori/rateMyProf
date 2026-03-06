@@ -1,0 +1,16 @@
+body
+{
+   background-image: url('../static/javier-miranda-Jn2EaLLYZfY-unsplash.jpg');
+    background-size: cover;
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
