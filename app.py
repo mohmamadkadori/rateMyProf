@@ -10,7 +10,12 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
 
 
-
+conn = helpers.get_db()
+cursor = conn.cursor()
+cursor.execute("""CREATE TABLE IF NOT EXISTS hocalar (
+               id SERIAL PRIMARY KEY, name TEXT, rating FLOAT, submissions INTEGER)""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS comments (
+               profId INTEGER REFERENCES hocalar(id), comment TEXT)""")
 
 
 @app.route('/')
