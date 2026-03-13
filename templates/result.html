@@ -35,7 +35,7 @@
     <div class="container mt-5">
         <h4 class="text-light mt-3">Puan Ver:</h4>
         <form action="/rate" method="post">
-            <input type="hidden" name="profId" value="{{ result['id'] }}">
+            <input type="hidden" name="profid" value="{{ result['id'] }}">
             <div class="input-group mb-3">
                 <input type="radio" class="btn-check" name="rating" id="rating1" value="1" autocomplete="off">
                 <label class="btn btn-light" for="rating1">1</label>
@@ -53,7 +53,7 @@
                 
         <h4 class="text-light">Yorum Yap:</h4>
         <form action="/comment" method="post">
-            <input type="hidden" name="profId" value="{{ result['id'] }}">
+            <input type="hidden" name="profid" value="{{ result['id'] }}">
             <div class="mb-3">
                 <textarea class="form-control" name="comment" rows="3" placeholder="Yorumunuzu buraya yazın..."></textarea>
                 <button type="submit" class="btn btn-primary mt-2">Yorum Yap</button>
